@@ -1,19 +1,12 @@
-﻿using RadarFII.Business.Intefaces;
+﻿using RadarFII.Data.Models;
 
 namespace RadarFII.Service
 {
-    public class ColetaProventosFIIService
+    public class ColetaProventosFIIService : IColetaProventosFIIService
     {
-        private readonly IColetaProventosFIIBusiness _coletaProventosFIBusiness;
-        public ColetaProventosFIIService(IColetaProventosFIIBusiness coletaProventosFIIBusiness)
+        public Task<IEnumerable<ProventoFII>> BuscarProventosAnunciadosEm(DateOnly dataBusca)
         {
-            _coletaProventosFIBusiness = coletaProventosFIIBusiness;
-        }
-        public async Task ExecutaColetaProventosFII()
-        {
-            var listaProventos = _coletaProventosFIBusiness.BuscaProventosFIIService();
-
-            _coletaProventosFIBusiness.SalvaProventosFIIService(listaProventos);
+            throw new NotImplementedException();
         }
     }
 }

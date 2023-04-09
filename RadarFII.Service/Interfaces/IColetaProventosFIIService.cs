@@ -1,7 +1,11 @@
-﻿namespace RadarFII.Service
+﻿
+
+using RadarFII.Data.Models;
+
+namespace RadarFII.Service
 {
     public interface IColetaProventosFIIService
     {
-        Task ExecutaColetaProventosFII();
+        Task<IEnumerable<ProventoFII>> BuscarProventosAnunciadosEm(DateOnly dataBusca);
     }
 }
