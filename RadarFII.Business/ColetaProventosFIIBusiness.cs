@@ -2,6 +2,7 @@
 using RadarFII.Data.Interfaces;
 using RadarFII.Data.Models;
 using RadarFII.Service;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace RadarFII.Business
@@ -41,7 +42,7 @@ namespace RadarFII.Business
             await _proventoFIIRepository.SalvaListaDeProventosFII(listaDeProventosDeFII);
         }
 
-        private IEnumerable<ProventoFII> removeAnunciosProventosJaColetados(IEnumerable<ProventoFII> listaDeProventosDeFIIcoletadosAgora)
+        private async Task<IEnumerable<ProventoFII>> removeAnunciosProventosJaColetados(IEnumerable<ProventoFII> listaDeProventosDeFIIcoletadosAgora)
         {
             //busca fundos já coletados hoje
             var proventosJaColetadosHoje = await _proventoFIIRepository.SelectProventosAnunciadosEm(dataHoje);
@@ -52,13 +53,12 @@ namespace RadarFII.Business
                 return novosLancamentosDeProventos;
             }
             else return null;
-
         }
 
         private async Task<IEnumerable<ProventoFII>> removeProventosJaColetados(IEnumerable<ProventoFII> proventosJaColetadosEmExecucaoAnterior,
                                                                                 IEnumerable<ProventoFII> proventosColetadosNaAtualExecucao)
         {
-            return null;
+            return proventosColetadosNaAtualExecucao.Except(proventosJaColetadosEmExecucaoAnterior);            
         }
 
         private bool JaHouveColetaHoje(IEnumerable<ProventoFII> proventosJaColetadosHoje)

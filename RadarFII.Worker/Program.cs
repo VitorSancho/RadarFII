@@ -33,6 +33,16 @@ public class Program
 
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((context, config) =>
+            {
+                //var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+                //Console.WriteLine($"AMBIENTE USADO (ASPNETCORE_Environment) : {environmentName}");
+
+                config
+                    .AddJsonFile("Configs/appsettings.json", optional: false, reloadOnChange: true);
+                    //.AddJsonFile($"appsettings.{environmentName}.json", optional: true, reloadOnChange: true)
+                    //.AddEnvironmentVariables("ASPNETCORE_");
+            })
             .ConfigureServices(services =>
             {
                 services.AddScheduler();

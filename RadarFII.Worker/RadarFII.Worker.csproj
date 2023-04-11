@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Coravel" Version="4.2.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
   </ItemGroup>
 
@@ -16,10 +17,6 @@
     <ProjectReference Include="..\RadarFII.Business\RadarFII.Business.csproj" />
     <ProjectReference Include="..\RadarFII.Data\RadarFII.Data.csproj" />
     <ProjectReference Include="..\RadarFII.Service\RadarFII.Service.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Configs\" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,4 @@
-﻿
-
-using RadarFII.Data.Interfaces;
+﻿using RadarFII.Data.Interfaces;
 using RadarFII.Data.Models;
 
 namespace RadarFII.Data.Repository
@@ -8,10 +6,9 @@ namespace RadarFII.Data.Repository
     public class ProventoFIIRepository : IProventoFIIRepository
     {
         private readonly IDBRepository _dBRepository;
-        public ProventoFIIRepository(IDBRepository _dBRepository)
+        public ProventoFIIRepository(IDBRepository dBRepository)
         {
             _dBRepository = dBRepository;
-
         }
 
         public async Task SalvaListaDeProventosFII(IEnumerable<ProventoFII> listaDeProventos)
@@ -21,9 +18,8 @@ namespace RadarFII.Data.Repository
 
         public async Task<IEnumerable<ProventoFII>> SelectProventosAnunciadosEm(DateOnly dataBusca)
         {
-            _dBRepository = "";
-
-            await null;
+            var expressaoConsultaProventosAnunciadosHoje = $"select*from AnuncioProventos where DataAnuncio='{dataBusca.ToString("yyyy-MM-dd")}'";
+            return await _dBRepository.RealizaConsulta<ProventoFII>(expressaoConsultaProventosAnunciadosHoje);
         }
     }
 }

@@ -13,6 +13,6 @@ namespace RadarFII.Data.Interfaces
     {
         SqlConnection ConectaDB();
 
-        IEnumerable<T> RealizaConsulta<T>(string expressaoConsulta);
+        Task<IEnumerable<T>> RealizaConsulta<T>(string expressaoConsulta);
     }
 }

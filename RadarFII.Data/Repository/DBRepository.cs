@@ -13,13 +13,13 @@ namespace RadarFII.Data.Repository
     public class DBRepository : IDBRepository, IDisposable
     {
         public SqlConnection DBConexao;
-        private readonly IConfiguration _configuration;
+        public IConfiguration _configuration;
         private readonly string strConexao;
 
         public DBRepository(IConfiguration configuration)
         {
             _configuration = configuration;
-            //strConexao = _configuration.Get("ConnectionStrings:DefaultConnection") ;
+            strConexao = _configuration["ConnectionStrings:DefaultConnection"];            
         }
 
         public SqlConnection ConectaDB()
@@ -27,14 +27,14 @@ namespace RadarFII.Data.Repository
             return new SqlConnection(strConexao);
         }
 
-        public async Task<IEnumerable<T>> RealizaConsulta<T>(string expressaoConsulta)
-        {
-            return await DBConexao.QueryAsync<T>(expressaoConsulta);
-        }
-
         public void Dispose()
         {
             DBConexao.Dispose();
+        }
+
+        async Task<IEnumerable<T>> IDBRepository.RealizaConsulta<T>(string expressaoConsulta)
+        {
+            return await DBConexao.QueryAsync<T>(expressaoConsulta);            
         }
     }
 }
