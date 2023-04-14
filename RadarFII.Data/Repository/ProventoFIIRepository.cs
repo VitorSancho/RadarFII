@@ -16,10 +16,10 @@ namespace RadarFII.Data.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<ProventoFII>> SelectProventosAnunciadosEm(DateOnly dataBusca)
+        public async Task<IEnumerable<int>> SelectIdAnunciosDivulgadosEm(DateOnly dataBusca)
         {
-            var expressaoConsultaProventosAnunciadosHoje = $"select*from AnuncioProventos where DataAnuncio='{dataBusca.ToString("yyyy-MM-dd")}'";
-            return await _dBRepository.RealizaConsulta<ProventoFII>(expressaoConsultaProventosAnunciadosHoje);
+            var expressaoConsultaProventosAnunciadosHoje = $"select AnuncioId from AnuncioProventos where DataAnuncio='{dataBusca.ToString("yyyy-MM-dd")}'";
+            return await _dBRepository.RealizaConsulta<int>(expressaoConsultaProventosAnunciadosHoje);
         }
     }
 }

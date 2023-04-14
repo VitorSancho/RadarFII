@@ -2,6 +2,7 @@
 using RadarFII.Data.Interfaces;
 using RadarFII.Data.Models;
 using RadarFII.Service;
+using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
@@ -9,11 +10,11 @@ namespace RadarFII.Business
 {
     public class ColetaProventosFIIBusiness : IColetaProventosFIIBusiness
     {
-        private readonly IColetaProventosFIIService _coletaProventosFIIService;
+        private readonly IColetaEventosFIIService _coletaProventosFIIService;
         private readonly IProventoFIIRepository _proventoFIIRepository;
         private DateOnly dataHoje;
 
-        public ColetaProventosFIIBusiness(IColetaProventosFIIService coletaProventosFIIService,
+        public ColetaProventosFIIBusiness(IColetaEventosFIIService coletaProventosFIIService,
                                             IProventoFIIRepository proventoFIIRepository)
         {
             _coletaProventosFIIService = coletaProventosFIIService;
@@ -23,18 +24,20 @@ namespace RadarFII.Business
         public async Task Coleta()
         {
             dataHoje = DateOnly.FromDateTime(DateTime.Now);
-            var ProventosAnunciadosHoje = await BuscarProventosAnunciadosHojeNaoColetados();
+            var AnunciosRealizadosHoje = await BuscarProventosAnunciadosHojeNaoColetados();
 
-            await SalvarNoBancoDeDados(ProventosAnunciadosHoje);
+            await SalvarNoBancoDeDados(AnunciosRealizadosHoje);
         }
 
         private async Task<IEnumerable<ProventoFII>> BuscarProventosAnunciadosHojeNaoColetados()
         {
-            var proventosAnunciadosHoje =  await _coletaProventosFIIService.BuscarProventosAnunciadosEm(dataHoje);
+            var proventosAnunciadosHoje = await _coletaProventosFIIService.BuscarEventosFIIAnunciadosEm(dataHoje);
 
-            var anunciosNaoColetados = removeAnunciosProventosJaColetados(proventosAnunciadosHoje);
+            var anunciosNaoColetados = await removeAnunciosProventosJaColetados(proventosAnunciadosHoje);
 
-            return anunciosNaoColetados;
+            var listaDeProventosAnunciadosHoje = await _coletaProventosFIIService.ExtraiProventosDeListaDeAnuncios(anunciosNaoColetados);
+
+            return listaDeProventosAnunciadosHoje;
         }
 
         private async Task SalvarNoBancoDeDados(IEnumerable<ProventoFII> listaDeProventosDeFII)
@@ -42,30 +45,47 @@ namespace RadarFII.Business
             await _proventoFIIRepository.SalvaListaDeProventosFII(listaDeProventosDeFII);
         }
 
-        private async Task<IEnumerable<ProventoFII>> removeAnunciosProventosJaColetados(IEnumerable<ProventoFII> listaDeProventosDeFIIcoletadosAgora)
+        private async Task<IEnumerable<AnuncioFII>> removeAnunciosProventosJaColetados(IEnumerable<AnuncioFII> listaDeProventosDeFIIcoletadosAgora)
         {
             //busca fundos já coletados hoje
-            var proventosJaColetadosHoje = await _proventoFIIRepository.SelectProventosAnunciadosEm(dataHoje);
+            var IdEventosJaColetadosHoje = await _proventoFIIRepository.SelectIdAnunciosDivulgadosEm(dataHoje);
 
-            if (JaHouveColetaHoje(proventosJaColetadosHoje))
-            {            
-                var novosLancamentosDeProventos = await removeProventosJaColetados(proventosJaColetadosHoje, listaDeProventosDeFIIcoletadosAgora);
+            if (JaHouveColetaHoje(IdEventosJaColetadosHoje))
+            {
+                var novosLancamentosDeProventos = await removeProventosJaColetados(IdEventosJaColetadosHoje, listaDeProventosDeFIIcoletadosAgora);
                 return novosLancamentosDeProventos;
             }
-            else return null;
+            return null;
+
         }
 
-        private async Task<IEnumerable<ProventoFII>> removeProventosJaColetados(IEnumerable<ProventoFII> proventosJaColetadosEmExecucaoAnterior,
-                                                                                IEnumerable<ProventoFII> proventosColetadosNaAtualExecucao)
-        {
-            return proventosColetadosNaAtualExecucao.Except(proventosJaColetadosEmExecucaoAnterior);            
-        }
-
-        private bool JaHouveColetaHoje(IEnumerable<ProventoFII> proventosJaColetadosHoje)
+        private bool JaHouveColetaHoje(IEnumerable<int> proventosJaColetadosHoje)
         {
             return proventosJaColetadosHoje.Count() > 0;
         }
 
+        private async Task<IEnumerable<AnuncioFII>> removeProventosJaColetados(IEnumerable<int> IdEventosJaColetadosEmExecucaoAnterior,
+                                                                            IEnumerable<AnuncioFII> anunciosColetadosNaAtualExecucao)
+        {
+            return anunciosColetadosNaAtualExecucao.Where(anuncio => ! IdEventosJaColetadosEmExecucaoAnterior.Contains(anuncio.id));
+        }
 
+        ////private async Task<IEnumerable<ProventoFII>> MappingDeAnuncioParaProvento(<IEnumerable<AnuncioFII> anunciosFII)
+        ////{
+        ////    IEnumerable<CitizenDTO> dto = anunciosFII.Select(x => x.ToProventoFII(x));
+        ////}
+
+        ////private async Task<ProventoFII> tToProventoFII(AnuncioFII anuncioFII)
+        ////{
+        ////    if (anuncioFII == null) return null;
+
+        ////    return new ProventoFII
+        ////    {
+        ////        Id = citizen.Id,
+        ////        Name = citizen.Name,
+        ////        HeadId = citizen.HeadId,
+        ////        HeadName = citizen.FamilyHead.Name
+        ////    }
+        ////}
     }
 }

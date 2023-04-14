@@ -9,9 +9,22 @@ Create Table Fundos
 	
 	CONSTRAINT PK_FundoId PRIMARY KEY (FundoId)
 );
+##########################################################################################
 
+Create Table Anuncio
+(
+	AnuncioId int not null IDENTITY(1,1),
+	FundoId int not null,
+	DataAnuncio Date not null,
+	ValorProvento decimal(4,2) not null,
+	DividenYieldNoMomentoDaColeta decimal(4,2) not null
+	
+	CONSTRAINT PK_AnuncioProventos PRIMARY KEY (AnuncioId),
+	FK_FundoId int FOREIGN KEY REFERENCES Fundos(FundoId)
+);
 
 ##########################################################################################
+Drop Table AnuncioProventos;
 Create Table AnuncioProventos
 (
 	AnuncioId int not null IDENTITY(1,1),
