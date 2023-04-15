@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -17,6 +17,10 @@
     <ProjectReference Include="..\RadarFII.Business\RadarFII.Business.csproj" />
     <ProjectReference Include="..\RadarFII.Data\RadarFII.Data.csproj" />
     <ProjectReference Include="..\RadarFII.Service\RadarFII.Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Configs\" />
   </ItemGroup>
 
 </Project>

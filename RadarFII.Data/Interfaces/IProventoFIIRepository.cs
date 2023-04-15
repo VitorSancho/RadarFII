@@ -10,6 +10,6 @@ namespace RadarFII.Data.Interfaces
     public interface IProventoFIIRepository
     {
         Task SalvaListaDeProventosFII(IEnumerable<ProventoFII> listaDeProventos);
-        Task<IEnumerable<int>> SelectIdAnunciosDivulgadosEm(DateOnly dataBusca);
+        Task<IEnumerable<string>> SelectIdAnunciosDivulgadosEm(DateOnly dataBusca);
     }
 }

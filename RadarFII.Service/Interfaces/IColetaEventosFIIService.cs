@@ -1,6 +1,4 @@
-﻿
-
-using RadarFII.Data.Models;
+﻿using RadarFII.Data.Models;
 
 namespace RadarFII.Service
 {
@@ -8,8 +6,6 @@ namespace RadarFII.Service
     {
         Task<IEnumerable<AnuncioFII>> BuscarEventosFIIAnunciadosEm(DateOnly dataBusca);
 
-        Task<IEnumerable<ProventoFII>> ExtraiProventosDeListaDeAnuncios(<IEnumerable<AnuncioFII> listaDeAnuncios);
-
-        
+        Task<IEnumerable<ProventoFII>> ExtraiProventosDeListaDeAnuncios(IEnumerable<AnuncioFII> listaDeAnuncios);        
     }
 }

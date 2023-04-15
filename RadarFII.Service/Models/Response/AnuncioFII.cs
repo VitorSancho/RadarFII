@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 public class AnuncioFII
 {
-    public int id { get; set; }
+    public string id { get; set; }
     public string descricaoFundo { get; set; }
     public string categoriaDocumento { get; set; }
     public string tipoDocumento { get; set; }

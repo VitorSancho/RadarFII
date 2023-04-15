@@ -2,7 +2,7 @@ using System.Data.SqlTypes;
 
 namespace RadarFII.Data.Models
 {
-    public class ProventoFII : Entity, IEquatable<ProventoFII>
+    public class ProventoFII //: IEquatable<ProventoFII>
     {
         public string NomeFundo { get; set; }
         public decimal Valor { get; set; }
@@ -10,12 +10,12 @@ namespace RadarFII.Data.Models
         public DateTime DataAnuncio { get; set; }
         public decimal DividenYieldNoMomentoDaColeta { get; set; }
 
-        public bool Equals(ProventoFII ProventoFII_2)
-        {
-            return ((Valor == ProventoFII_2.Valor) &&
-                (NomeFundo == ProventoFII_2.NomeFundo) &&
-                (DataPagamento == ProventoFII_2.DataPagamento) &&
-                (DividenYieldNoMomentoDaColeta == ProventoFII_2.DividenYieldNoMomentoDaColeta));
-        }
+        //public bool Equals(ProventoFII ProventoFII_2)
+        //{
+        //    return ((Valor == ProventoFII_2.Valor) &&
+        //        (NomeFundo == ProventoFII_2.NomeFundo) &&
+        //        (DataPagamento == ProventoFII_2.DataPagamento) &&
+        //        (DividenYieldNoMomentoDaColeta == ProventoFII_2.DividenYieldNoMomentoDaColeta));
+        //}
     }
 }

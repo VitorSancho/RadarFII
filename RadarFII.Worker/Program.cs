@@ -7,7 +7,11 @@ using System.IO;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using RadarFIIWorker;
-
+using RadarFII.Service;
+using RadarFII.Data.Interfaces;
+using RadarFII.Data.Repository;
+using RadarFII.Business.Intefaces;
+using RadarFII.Business;
 
 public class Program
 {
@@ -23,11 +27,12 @@ public class Program
         //////        .EveryFiveSeconds()
         //////        .Weekday();
         //////});
-        host.Services.UseScheduler(scheduler =>
+        host.Services.UseScheduler(scheduler => {
             scheduler
                 .Schedule<ColetaProventosFIIJob>()
-                .EveryMinute()
-    );
+                .Hourly().Weekday()
+                .RunOnceAtStart();
+    });
         host.Run();
     }
 
@@ -39,15 +44,18 @@ public class Program
                 //Console.WriteLine($"AMBIENTE USADO (ASPNETCORE_Environment) : {environmentName}");
 
                 config
-                    .AddJsonFile("Configs/appsettings.json", optional: false, reloadOnChange: true);
+                    .AddJsonFile("C:\\Users\\vitor\\OneDrive\\Documentos\\Desafios e Projetos\\RadarFII\\RadarFII\\RadarFII.Worker\\appsettings.json", optional: false, reloadOnChange: true);
                     //.AddJsonFile($"appsettings.{environmentName}.json", optional: true, reloadOnChange: true)
                     //.AddEnvironmentVariables("ASPNETCORE_");
             })
-            .ConfigureServices(services =>
+            .ConfigureServices((hostContext, services) =>
             {
                 services.AddScheduler();
                 // Add this 👇
-                services.AddSingleton<ColetaProventosFIIJob>();
+                services.AddTransient<ColetaProventosFIIJob>();
+                services.AddSingleton<IColetaEventosFIIService,ColetaEventosFIIService > ();
+                services.AddSingleton<IProventoFIIRepository, ProventoFIIRepository>();
+                services.AddSingleton<IColetaProventosFIIBusiness, ColetaProventosFIIBusiness>();
                 //services.AddSingleton<PublicaProventosInstagramJob>();
             });
 };

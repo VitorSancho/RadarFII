@@ -19,7 +19,7 @@ namespace RadarFIIWorker
 
         public async Task Invoke()
         {
-            _coletaProventosFIIBusiness.Coleta();
+            await _coletaProventosFIIBusiness.Coleta();
         }
     }
 }

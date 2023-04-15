@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using HtmlAgilityPack;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using RadarFII.Data.Models;
 using RestSharp;
@@ -28,14 +29,16 @@ namespace RadarFII.Service
             return ultimos50AnunciosPublicados;
         }
 
-        public Task<IEnumerable<ProventoFII>> ExtraiProventosDeListaDeAnuncios(IEnumerable<AnuncioFII> listaDeAnuncios)
+        public async Task<IEnumerable<ProventoFII>> ExtraiProventosDeListaDeAnuncios(IEnumerable<AnuncioFII> listaDeAnuncios)
         {
             var listaProventos = new List<ProventoFII>();
            foreach(var anuncioFII in listaDeAnuncios)
             {
-                var proventos =  ExtrairProvento(anuncioFII);
+                var proventos = await RequisitarEExtrairProvento(anuncioFII);
                 listaProventos.Add(proventos);
             }
+
+            return listaProventos;
 
         }
 
@@ -54,17 +57,38 @@ namespace RadarFII.Service
             return JsonConvert.DeserializeObject<IEnumerable<AnuncioFII>>(response);
         }
 
-        private async Task<ProventoFII> ExtrairProvento(AnuncioFII anuncioFII)
+        private async Task<ProventoFII> RequisitarEExtrairProvento(AnuncioFII anuncioFII)
         {
-            var request = new RestRequest(UrlAnuncio.Replace("@idevento", anuncioFII.id));
-            var response = await restClient.GetAsync(request);
+            var htmlAnuncio = await RequisitarAnuncio(anuncioFII.id);
 
+            return await ExtrairProvento(htmlAnuncio);
+        }
+
+        private async Task<string> RequisitarAnuncio(string idAnuncio)
+        {
+            var request = new RestRequest(UrlAnuncio.Replace("@idevento", idAnuncio));
+            return await restClient.GetAsync<string>(request);
+        }
+
+        private async Task<ProventoFII> ExtrairProvento(string htmlAnuncio)
+        {
             HtmlDocument doc = new HtmlDocument();
-            doc.Load(yourStream);
+            doc.Load(htmlAnuncio);
 
-            var itemList = doc.DocumentNode.SelectNodes("//span[@class='hidden first']")//this xpath selects all span tag having its class as hidden first
-                              .Select(p => p.InnerText)
+            var dadosSobreProventos = doc.DocumentNode.SelectNodes("//span[@class='dado-valores']")//this xpath selects all span tag having its class as hidden first                              
                               .ToList();
+
+            var objProvento = ParserParaProventos(dadosSobreProventos);
+
+            return null;
+        }
+
+        private ProventoFII ParserParaProventos(List<HtmlNode> listaDeDados)
+        {
+            var provento = new ProventoFII();
+            provento.DataAnuncio = new DateTime(2010,10,10);
+
+            return provento;
         }
     }
 }

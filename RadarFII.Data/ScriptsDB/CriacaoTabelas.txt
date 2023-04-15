@@ -1,5 +1,6 @@
 ﻿use RadarFII;
 
+DROP TABLE IF EXISTS Fundos;
 Create Table Fundos
 (
 	FundoId int not null IDENTITY(1,1),
@@ -9,46 +10,44 @@ Create Table Fundos
 	
 	CONSTRAINT PK_FundoId PRIMARY KEY (FundoId)
 );
-##########################################################################################
 
-Create Table Anuncio
+CREATE INDEX idx_NomeFundo
+ON Fundos(NomeFundo);
+
+--##########################################################################################
+
+DROP TABLE IF EXISTS AnunciosFII;
+Create Table AnunciosFII
 (
 	AnuncioId int not null IDENTITY(1,1),
-	FundoId int not null,
+	NomeFundo int not null,
+	ReportId int not null,	
+	TipoDocumento int not null,
 	DataAnuncio Date not null,
-	ValorProvento decimal(4,2) not null,
-	DividenYieldNoMomentoDaColeta decimal(4,2) not null
 	
-	CONSTRAINT PK_AnuncioProventos PRIMARY KEY (AnuncioId),
+	
+	CONSTRAINT PK_AnuncioProventoId PRIMARY KEY (AnuncioId),
 	FK_FundoId int FOREIGN KEY REFERENCES Fundos(FundoId)
 );
 
-##########################################################################################
-Drop Table AnuncioProventos;
+CREATE INDEX idx_DataAnuncio
+ON AnunciosFII(DataAnuncio);
+
+--##########################################################################################
+
+DROP TABLE IF EXISTS AnuncioProventos;
 Create Table AnuncioProventos
 (
 	AnuncioId int not null IDENTITY(1,1),
 	FundoId int not null,
 	DataAnuncio Date not null,
+	DataPagamento Date not null,
 	ValorProvento decimal(4,2) not null,
-	DividenYieldNoMomentoDaColeta decimal(4,2) not null
-	
-	CONSTRAINT PK_AnuncioProventos PRIMARY KEY (AnuncioId),
-	FK_FundoId int FOREIGN KEY REFERENCES Fundos(FundoId)
+	Ticket varchar(8),
+
+	FK_FundoId int FOREIGN KEY REFERENCES AnunciosFII(AnuncioId)
 );
 
 CREATE INDEX idx_DataAnuncio
 ON AnuncioProventos(DataAnuncio);
 
-##########################################################################################
-Create Table PublicacaoAnuncioProvento
-(
-	PublicacaoId int not null IDENTITY(1,1),
-	AnuncioId int not null,
-	DataPublicacao Date not null,
-
-	CONSTRAINT PK_PublicacaoId PRIMARY KEY (AnuncioId),
-	FK_AnuncioId int FOREIGN KEY REFERENCES AnuncioProventos(AnuncioId)
-);
-
-##########################################################################################

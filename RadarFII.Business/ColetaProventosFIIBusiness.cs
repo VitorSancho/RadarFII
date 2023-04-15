@@ -59,15 +59,15 @@ namespace RadarFII.Business
 
         }
 
-        private bool JaHouveColetaHoje(IEnumerable<int> proventosJaColetadosHoje)
+        private bool JaHouveColetaHoje(IEnumerable<string> proventosJaColetadosHoje)
         {
             return proventosJaColetadosHoje.Count() > 0;
         }
 
-        private async Task<IEnumerable<AnuncioFII>> removeProventosJaColetados(IEnumerable<int> IdEventosJaColetadosEmExecucaoAnterior,
+        private async Task<IEnumerable<AnuncioFII>> removeProventosJaColetados(IEnumerable<string> IdEventosJaColetadosEmExecucaoAnterior,
                                                                             IEnumerable<AnuncioFII> anunciosColetadosNaAtualExecucao)
         {
-            return anunciosColetadosNaAtualExecucao.Where(anuncio => ! IdEventosJaColetadosEmExecucaoAnterior.Contains(anuncio.id));
+            return anunciosColetadosNaAtualExecucao.Where(anuncio => ! IdEventosJaColetadosEmExecucaoAnterior.ToList().Contains(anuncio.id));
         }
 
         ////private async Task<IEnumerable<ProventoFII>> MappingDeAnuncioParaProvento(<IEnumerable<AnuncioFII> anunciosFII)
