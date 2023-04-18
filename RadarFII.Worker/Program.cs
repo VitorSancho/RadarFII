@@ -7,37 +7,42 @@ using System.IO;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using RadarFIIWorker;
-using RadarFII.Service;
-using RadarFII.Data.Interfaces;
-using RadarFII.Data.Repository;
+//using RadarFII.Service;
+//using RadarFII.Data.Interfaces;
+//using RadarFII.Data.Repository;
 using RadarFII.Business.Intefaces;
 using RadarFII.Business;
+using RadarFII.Data.Interfaces;
+using RadarFII.Service;
+using RadarFII.Data.Repository;
 
 public class Program
 {
     public static void Main(string[] args)
     {
-        // Changed to return the IHost
-        // builder before running it.
         IHost host = CreateHostBuilder(args).Build();
-        //////host.Services.UseScheduler(scheduler => {
-        //////    // Easy peasy 👇
-        //////    scheduler
-        //////        .Schedule<ColetaProventosFIIWorker>()
-        //////        .EveryFiveSeconds()
-        //////        .Weekday();
-        //////});
         host.Services.UseScheduler(scheduler => {
             scheduler
                 .Schedule<ColetaProventosFIIJob>()
                 .Hourly().Weekday()
                 .RunOnceAtStart();
-    });
+        })
+            .OnError(e => Console.WriteLine(e));
         host.Run();
     }
 
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
+            .ConfigureServices((hostContext, services) =>
+            {
+                services.AddScheduler();
+
+                services.AddTransient<ColetaProventosFIIJob>();
+                services.AddScoped<IColetaEventosFIIService, ColetaEventosFIIService>();
+                services.AddScoped<IProventoFIIRepository, ProventoFIIRepository>();
+                services.AddScoped<IColetaProventosFIIBusiness, ColetaProventosFIIBusiness>();
+                services.AddScoped<IDBRepository, DBRepository>();
+            })
             .ConfigureAppConfiguration((context, config) =>
             {
                 //var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
@@ -45,18 +50,7 @@ public class Program
 
                 config
                     .AddJsonFile("C:\\Users\\vitor\\OneDrive\\Documentos\\Desafios e Projetos\\RadarFII\\RadarFII\\RadarFII.Worker\\appsettings.json", optional: false, reloadOnChange: true);
-                    //.AddJsonFile($"appsettings.{environmentName}.json", optional: true, reloadOnChange: true)
-                    //.AddEnvironmentVariables("ASPNETCORE_");
-            })
-            .ConfigureServices((hostContext, services) =>
-            {
-                services.AddScheduler();
-                // Add this 👇
-                services.AddTransient<ColetaProventosFIIJob>();
-                services.AddSingleton<IColetaEventosFIIService,ColetaEventosFIIService > ();
-                services.AddSingleton<IProventoFIIRepository, ProventoFIIRepository>();
-                services.AddSingleton<IColetaProventosFIIBusiness, ColetaProventosFIIBusiness>();
-                //services.AddSingleton<PublicaProventosInstagramJob>();
+                //.AddJsonFile($"appsettings.{environmentName}.json", optional: true, reloadOnChange: true)
+                //.AddEnvironmentVariables("ASPNETCORE_");
             });
 };
-

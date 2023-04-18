@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 
 namespace RadarFII.Data.Repository
 {
-    public class DBRepository : IDBRepository, IDisposable
+    public class DBRepository : IDBRepository
+        //, IDisposable
     {
         public SqlConnection DBConexao;
         public IConfiguration _configuration;
@@ -19,22 +20,23 @@ namespace RadarFII.Data.Repository
         public DBRepository(IConfiguration configuration)
         {
             _configuration = configuration;
-            strConexao = _configuration["ConnectionStrings:DefaultConnection"];            
+            strConexao = _configuration["ConnectionStrings:DefaultConnection"];
         }
 
-        public SqlConnection ConectaDB()
+        private void ConectaDB()
         {
-            return new SqlConnection(strConexao);
+            DBConexao = new SqlConnection(strConexao);
         }
 
-        public void Dispose()
-        {
-            DBConexao.Dispose();
-        }
+        //public void Dispose()
+        //{
+        //    DBConexao.Dispose();
+        //}
 
         async Task<IEnumerable<T>> IDBRepository.RealizaConsulta<T>(string expressaoConsulta)
         {
-            return await DBConexao.QueryAsync<T>(expressaoConsulta);            
+            if (DBConexao == null) { ConectaDB(); }
+            return await DBConexao.QueryAsync<T>(expressaoConsulta);
         }
     }
 }

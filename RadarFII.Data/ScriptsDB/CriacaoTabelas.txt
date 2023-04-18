@@ -50,4 +50,3 @@ Create Table AnuncioProventos
 
 CREATE INDEX idx_DataAnuncio
 ON AnuncioProventos(DataAnuncio);
-

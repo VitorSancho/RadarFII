@@ -1,8 +1,11 @@
 ﻿using HtmlAgilityPack;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using RadarFII.Data.Interfaces;
 using RadarFII.Data.Models;
 using RestSharp;
+using System.Net;
+using System.Xml;
 
 namespace RadarFII.Service
 {
@@ -16,23 +19,25 @@ namespace RadarFII.Service
         public ColetaEventosFIIService(IConfiguration _configuration)
         {
             configuration = _configuration;
-            UrlListaAnuncios = _configuration["BmfFundos.Net:UrlListaAnuncios"];
+            UrlListaAnuncios = _configuration["BmfFundosNet:UrlListaAnuncios"];
 
-            UrlAnuncio = _configuration["BmfFundos.Net:UrlAnuncio"];
+            UrlAnuncio = _configuration["BmfFundosNet:UrlAnuncio"];
 
-            var restClient = new RestClient();
+            restClient = new RestClient();
         }
 
         public async Task<IEnumerable<AnuncioFII>> BuscarEventosFIIAnunciadosEm(DateOnly dataBusca)
         {
-            var ultimos50AnunciosPublicados = await BuscarUltimos50Anuncios();
-            return ultimos50AnunciosPublicados;
+            Console.WriteLine("Buscando anuncios...");
+            var ultimos50AnunciosPublicados = BuscarUltimos50Anuncios().Result;
+            return (IEnumerable<AnuncioFII>)ultimos50AnunciosPublicados
+                            .Where(anuncio => anuncio.dataEntrega.Substring(0, 10) == dataBusca.ToString("dd/MM/yyyy")).ToList();
         }
 
         public async Task<IEnumerable<ProventoFII>> ExtraiProventosDeListaDeAnuncios(IEnumerable<AnuncioFII> listaDeAnuncios)
         {
             var listaProventos = new List<ProventoFII>();
-           foreach(var anuncioFII in listaDeAnuncios)
+            foreach (var anuncioFII in listaDeAnuncios)
             {
                 var proventos = await RequisitarEExtrairProvento(anuncioFII);
                 listaProventos.Add(proventos);
@@ -47,33 +52,35 @@ namespace RadarFII.Service
             var request = new RestRequest(UrlListaAnuncios);
             request.AddParameter("d", "50");
             request.AddParameter("s", "0");
-            request.AddParameter("l", "0");
+            request.AddParameter("l", "50");
             request.AddParameter("o[0][dataEntrega]", "desc");
             request.AddParameter("idCategoriaDocumento", "14");
             request.AddParameter("idTipoDocumento", "41");
             request.AddParameter("idEspecieDocumento", "0");
             request.AddParameter("tipoFundo", "1");
-            var response = restClient.GetAsync(request).Result.Content;
-            return JsonConvert.DeserializeObject<IEnumerable<AnuncioFII>>(response);
+            request.Timeout = 30000;
+            var response = restClient.Get(request).Content;
+            return JsonConvert.DeserializeObject<ResponseAnuncioFII>(response).data;
         }
 
         private async Task<ProventoFII> RequisitarEExtrairProvento(AnuncioFII anuncioFII)
         {
             var htmlAnuncio = await RequisitarAnuncio(anuncioFII.id);
 
-            return await ExtrairProvento(htmlAnuncio);
+            return await ExtrairProvento(htmlAnuncio,anuncioFII.id);
         }
 
         private async Task<string> RequisitarAnuncio(string idAnuncio)
         {
-            var request = new RestRequest(UrlAnuncio.Replace("@idevento", idAnuncio));
-            return await restClient.GetAsync<string>(request);
+            WebClient client = new WebClient();
+            var request = client.DownloadString(UrlAnuncio.Replace("@idevento", idAnuncio)).ToString();
+            return request;
         }
 
-        private async Task<ProventoFII> ExtrairProvento(string htmlAnuncio)
+        private async Task<ProventoFII> ExtrairProvento(string htmlAnuncio, string idAnuncio)
         {
             HtmlDocument doc = new HtmlDocument();
-            doc.Load(htmlAnuncio);
+            doc.Load(UrlAnuncio.Replace("@idevento", idAnuncio),true);
 
             var dadosSobreProventos = doc.DocumentNode.SelectNodes("//span[@class='dado-valores']")//this xpath selects all span tag having its class as hidden first                              
                               .ToList();
@@ -86,7 +93,7 @@ namespace RadarFII.Service
         private ProventoFII ParserParaProventos(List<HtmlNode> listaDeDados)
         {
             var provento = new ProventoFII();
-            provento.DataAnuncio = new DateTime(2010,10,10);
+            provento.DataAnuncio = new DateTime(2010, 10, 10);
 
             return provento;
         }

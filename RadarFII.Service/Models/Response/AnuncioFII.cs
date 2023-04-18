@@ -39,3 +39,12 @@ public class AnuncioFII
     public object tipoPedido { get; set; }
     public object dda { get; set; }
 }
+
+public class ResponseAnuncioFII
+{
+    public int draw { get; set; }
+    public int recordsFiltered { get; set; }
+    public int recordsTotal { get; set; }
+    public IEnumerable<AnuncioFII> data { get; set; }
+
+}

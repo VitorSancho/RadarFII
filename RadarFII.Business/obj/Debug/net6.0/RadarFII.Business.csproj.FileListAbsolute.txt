@@ -1,0 +1,34 @@
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Business.deps.json
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Business.dll
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Business.pdb
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\obj\Debug\net6.0\RadarFII.Business.csproj.AssemblyReference.cache
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\obj\Debug\net6.0\RadarFII.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\obj\Debug\net6.0\RadarFII.Business.AssemblyInfoInputs.cache
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\obj\Debug\net6.0\RadarFII.Business.AssemblyInfo.cs
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\obj\Debug\net6.0\RadarFII.Business.csproj.CoreCompileInputs.cache
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\obj\Debug\net6.0\RadarFII.Business.dll
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\obj\Debug\net6.0\refint\RadarFII.Business.dll
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\obj\Debug\net6.0\RadarFII.Business.pdb
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\obj\Debug\net6.0\ref\RadarFII.Business.dll
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Data.dll
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Service.dll
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Service.pdb
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Data.pdb
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\obj\Debug\net6.0\RadarFII.Business.csproj.CopyComplete
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Business.deps.json
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Business.dll
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Business.pdb
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Data.dll
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Service.dll
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Service.pdb
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Data.pdb
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\obj\Debug\net6.0\RadarFII.Business.csproj.AssemblyReference.cache
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\obj\Debug\net6.0\RadarFII.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\obj\Debug\net6.0\RadarFII.Business.AssemblyInfoInputs.cache
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\obj\Debug\net6.0\RadarFII.Business.AssemblyInfo.cs
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\obj\Debug\net6.0\RadarFII.Business.csproj.CoreCompileInputs.cache
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\obj\Debug\net6.0\RadarFII.Business.csproj.CopyComplete
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\obj\Debug\net6.0\RadarFII.Business.dll
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\obj\Debug\net6.0\refint\RadarFII.Business.dll
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\obj\Debug\net6.0\RadarFII.Business.pdb
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\obj\Debug\net6.0\ref\RadarFII.Business.dll

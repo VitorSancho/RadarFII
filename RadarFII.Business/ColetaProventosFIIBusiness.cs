@@ -23,6 +23,7 @@ namespace RadarFII.Business
 
         public async Task Coleta()
         {
+            Console.WriteLine("Something...");
             dataHoje = DateOnly.FromDateTime(DateTime.Now);
             var AnunciosRealizadosHoje = await BuscarProventosAnunciadosHojeNaoColetados();
 
@@ -31,6 +32,7 @@ namespace RadarFII.Business
 
         private async Task<IEnumerable<ProventoFII>> BuscarProventosAnunciadosHojeNaoColetados()
         {
+            Console.WriteLine("Buscando...");
             var proventosAnunciadosHoje = await _coletaProventosFIIService.BuscarEventosFIIAnunciadosEm(dataHoje);
 
             var anunciosNaoColetados = await removeAnunciosProventosJaColetados(proventosAnunciadosHoje);
@@ -55,7 +57,7 @@ namespace RadarFII.Business
                 var novosLancamentosDeProventos = await removeProventosJaColetados(IdEventosJaColetadosHoje, listaDeProventosDeFIIcoletadosAgora);
                 return novosLancamentosDeProventos;
             }
-            return null;
+            return listaDeProventosDeFIIcoletadosAgora;
 
         }
 
@@ -67,25 +69,7 @@ namespace RadarFII.Business
         private async Task<IEnumerable<AnuncioFII>> removeProventosJaColetados(IEnumerable<string> IdEventosJaColetadosEmExecucaoAnterior,
                                                                             IEnumerable<AnuncioFII> anunciosColetadosNaAtualExecucao)
         {
-            return anunciosColetadosNaAtualExecucao.Where(anuncio => ! IdEventosJaColetadosEmExecucaoAnterior.ToList().Contains(anuncio.id));
+            return anunciosColetadosNaAtualExecucao.Where(anuncio => !IdEventosJaColetadosEmExecucaoAnterior.ToList().Contains(anuncio.id));
         }
-
-        ////private async Task<IEnumerable<ProventoFII>> MappingDeAnuncioParaProvento(<IEnumerable<AnuncioFII> anunciosFII)
-        ////{
-        ////    IEnumerable<CitizenDTO> dto = anunciosFII.Select(x => x.ToProventoFII(x));
-        ////}
-
-        ////private async Task<ProventoFII> tToProventoFII(AnuncioFII anuncioFII)
-        ////{
-        ////    if (anuncioFII == null) return null;
-
-        ////    return new ProventoFII
-        ////    {
-        ////        Id = citizen.Id,
-        ////        Name = citizen.Name,
-        ////        HeadId = citizen.HeadId,
-        ////        HeadName = citizen.FamilyHead.Name
-        ////    }
-        ////}
     }
 }

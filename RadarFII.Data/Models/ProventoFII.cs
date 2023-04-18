@@ -1,4 +1,4 @@
-using System.Data.SqlTypes;
+﻿using System.Data.SqlTypes;
 
 namespace RadarFII.Data.Models
 {

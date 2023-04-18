@@ -1,0 +1,30 @@
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Service\bin\Debug\net6.0\RadarFII.Service.deps.json
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Service\bin\Debug\net6.0\RadarFII.Service.dll
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Service\bin\Debug\net6.0\RadarFII.Service.pdb
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Service\bin\Debug\net6.0\RadarFII.Data.dll
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Service\bin\Debug\net6.0\RadarFII.Data.pdb
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Service\obj\Debug\net6.0\RadarFII.Service.csproj.AssemblyReference.cache
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Service\obj\Debug\net6.0\RadarFII.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Service\obj\Debug\net6.0\RadarFII.Service.AssemblyInfoInputs.cache
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Service\obj\Debug\net6.0\RadarFII.Service.AssemblyInfo.cs
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Service\obj\Debug\net6.0\RadarFII.Service.csproj.CoreCompileInputs.cache
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Service\obj\Debug\net6.0\RadarFII.Service.csproj.CopyComplete
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Service\obj\Debug\net6.0\RadarFII.Service.dll
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Service\obj\Debug\net6.0\refint\RadarFII.Service.dll
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Service\obj\Debug\net6.0\RadarFII.Service.pdb
+C:\Users\vitor\Desktop\RadarFII\RadarFII.Service\obj\Debug\net6.0\ref\RadarFII.Service.dll
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\bin\Debug\net6.0\RadarFII.Service.deps.json
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\bin\Debug\net6.0\RadarFII.Service.dll
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\bin\Debug\net6.0\RadarFII.Service.pdb
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\bin\Debug\net6.0\RadarFII.Data.dll
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\bin\Debug\net6.0\RadarFII.Data.pdb
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\obj\Debug\net6.0\RadarFII.Service.csproj.AssemblyReference.cache
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\obj\Debug\net6.0\RadarFII.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\obj\Debug\net6.0\RadarFII.Service.AssemblyInfoInputs.cache
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\obj\Debug\net6.0\RadarFII.Service.AssemblyInfo.cs
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\obj\Debug\net6.0\RadarFII.Service.csproj.CoreCompileInputs.cache
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\obj\Debug\net6.0\RadarFII.Service.csproj.CopyComplete
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\obj\Debug\net6.0\RadarFII.Service.dll
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\obj\Debug\net6.0\refint\RadarFII.Service.dll
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\obj\Debug\net6.0\RadarFII.Service.pdb
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\obj\Debug\net6.0\ref\RadarFII.Service.dll

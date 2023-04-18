@@ -1,0 +1,5 @@
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\obj\Debug\net6.0\RadarFII.Worker.csproj.AssemblyReference.cache
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\obj\Debug\net6.0\RadarFII.Worker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\obj\Debug\net6.0\RadarFII.Worker.AssemblyInfoInputs.cache
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\obj\Debug\net6.0\RadarFII.Worker.AssemblyInfo.cs
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\obj\Debug\net6.0\RadarFII.Worker.csproj.CoreCompileInputs.cache
