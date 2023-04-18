@@ -80,7 +80,7 @@ namespace RadarFII.Service
         private async Task<ProventoFII> ExtrairProvento(string htmlAnuncio, string idAnuncio)
         {
             HtmlDocument doc = new HtmlDocument();
-            doc.Load(UrlAnuncio.Replace("@idevento", idAnuncio),true);
+            doc.LoadHtml(htmlAnuncio);
 
             var dadosSobreProventos = doc.DocumentNode.SelectNodes("//span[@class='dado-valores']")//this xpath selects all span tag having its class as hidden first                              
                               .ToList();

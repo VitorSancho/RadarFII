@@ -24,7 +24,8 @@ namespace RadarFII.Business
         public async Task Coleta()
         {
             Console.WriteLine("Something...");
-            dataHoje = DateOnly.FromDateTime(DateTime.Now);
+            //dataHoje = DateOnly.FromDateTime(DateTime.Now);
+            dataHoje = new DateOnly(2023, 04, 17);
             var AnunciosRealizadosHoje = await BuscarProventosAnunciadosHojeNaoColetados();
 
             await SalvarNoBancoDeDados(AnunciosRealizadosHoje);
