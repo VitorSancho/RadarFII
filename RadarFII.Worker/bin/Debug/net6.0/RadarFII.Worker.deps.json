@@ -73,6 +73,69 @@
           }
         }
       },
+      "DotNetSeleniumExtras.WaitHelpers/3.11.0": {
+        "dependencies": {
+          "Selenium.WebDriver": "4.9.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SeleniumExtras.WaitHelpers.dll": {
+            "assemblyVersion": "3.11.0.0",
+            "fileVersion": "3.11.0.0"
+          }
+        }
+      },
+      "FSharp.Core/4.5.2": {
+        "runtime": {
+          "lib/netstandard1.6/FSharp.Core.dll": {
+            "assemblyVersion": "4.5.0.0",
+            "fileVersion": "2018.7.27.2"
+          }
+        },
+        "resources": {
+          "lib/netstandard1.6/cs/FSharp.Core.resources.dll": {
+            "locale": "cs"
+          },
+          "lib/netstandard1.6/de/FSharp.Core.resources.dll": {
+            "locale": "de"
+          },
+          "lib/netstandard1.6/en/FSharp.Core.resources.dll": {
+            "locale": "en"
+          },
+          "lib/netstandard1.6/es/FSharp.Core.resources.dll": {
+            "locale": "es"
+          },
+          "lib/netstandard1.6/fr/FSharp.Core.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netstandard1.6/it/FSharp.Core.resources.dll": {
+            "locale": "it"
+          },
+          "lib/netstandard1.6/ja/FSharp.Core.resources.dll": {
+            "locale": "ja"
+          },
+          "lib/netstandard1.6/ko/FSharp.Core.resources.dll": {
+            "locale": "ko"
+          },
+          "lib/netstandard1.6/pl/FSharp.Core.resources.dll": {
+            "locale": "pl"
+          },
+          "lib/netstandard1.6/pt-BR/FSharp.Core.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netstandard1.6/ru/FSharp.Core.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netstandard1.6/tr/FSharp.Core.resources.dll": {
+            "locale": "tr"
+          },
+          "lib/netstandard1.6/zh-Hans/FSharp.Core.resources.dll": {
+            "locale": "zh-Hans"
+          },
+          "lib/netstandard1.6/zh-Hant/FSharp.Core.resources.dll": {
+            "locale": "zh-Hant"
+          }
+        }
+      },
       "HtmlAgilityPack/1.11.46": {
         "runtime": {
           "lib/netstandard2.0/HtmlAgilityPack.dll": {
@@ -651,6 +714,45 @@
           }
         }
       },
+      "ScrapySharp/3.0.0": {
+        "dependencies": {
+          "FSharp.Core": "4.5.2",
+          "HtmlAgilityPack": "1.11.46",
+          "System.Runtime.Caching": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/ScrapySharp.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "0.0.0.0"
+          },
+          "lib/netstandard2.0/ScrapySharp.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Selenium.Support/4.9.1": {
+        "dependencies": {
+          "Selenium.WebDriver": "4.9.1"
+        },
+        "runtime": {
+          "lib/net6.0/WebDriver.Support.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
+      "Selenium.WebDriver/4.9.1": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "lib/net6.0/WebDriver.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.0.0.0"
+          }
+        }
+      },
       "System.Configuration.ConfigurationManager/6.0.1": {
         "dependencies": {
           "System.Security.Cryptography.ProtectedData": "6.0.0",
@@ -892,11 +994,15 @@
       },
       "RadarFII.Service/1.0.0": {
         "dependencies": {
+          "DotNetSeleniumExtras.WaitHelpers": "3.11.0",
           "HtmlAgilityPack": "1.11.46",
           "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
           "Newtonsoft.Json": "13.0.3",
           "RadarFII.Data": "1.0.0",
-          "RestSharp": "110.2.0"
+          "RestSharp": "110.2.0",
+          "ScrapySharp": "3.0.0",
+          "Selenium.Support": "4.9.1",
+          "Selenium.WebDriver": "4.9.1"
         },
         "runtime": {
           "RadarFII.Service.dll": {}
@@ -937,6 +1043,20 @@
       "sha512": "sha512-RDFF4rBLLmbpi6pwkY7q/M6UXHRJEOerplDGE5jwEkP/JGJnBauAClYavNKJPW1yOTWRPIyfj4is3EaJxQXILQ==",
       "path": "dapper/2.0.123",
       "hashPath": "dapper.2.0.123.nupkg.sha512"
+    },
+    "DotNetSeleniumExtras.WaitHelpers/3.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xc6jVVl5ymgk3ZNWnC/KHxkEup1QpnwYbrwF+NQoCOGERsD8YMlLwmsX4lGhLXCLo/YQTRTIwlKCN9E/doGUNg==",
+      "path": "dotnetseleniumextras.waithelpers/3.11.0",
+      "hashPath": "dotnetseleniumextras.waithelpers.3.11.0.nupkg.sha512"
+    },
+    "FSharp.Core/4.5.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-apbdQOjzsjQ637kTWQuW29jqwY18jsHMyNC5A+TPJZKFEIE2cIfQWf3V7+mXrxlbX69BueYkv293/g70wuXuRw==",
+      "path": "fsharp.core/4.5.2",
+      "hashPath": "fsharp.core.4.5.2.nupkg.sha512"
     },
     "HtmlAgilityPack/1.11.46": {
       "type": "package",
@@ -1259,6 +1379,27 @@
       "sha512": "sha512-FXGw0IMcqY7yO/hzS9QrD3iNswNgb9UxJnxWmfOxmGs4kRlZWqdtBoGPLuhlbgsDzX1RFo4WKui8TGGKXWKalw==",
       "path": "restsharp/110.2.0",
       "hashPath": "restsharp.110.2.0.nupkg.sha512"
+    },
+    "ScrapySharp/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qwOe4oPAFPgFP5pi9aMHo5I66Pw8EYiY93k/FQvHs3P0vgt/cnjsgMuoc6pxYXrxVbBdKSqPTkem1D4iktjHNQ==",
+      "path": "scrapysharp/3.0.0",
+      "hashPath": "scrapysharp.3.0.0.nupkg.sha512"
+    },
+    "Selenium.Support/4.9.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-z77X5gmLkda4/3A/RsnkYwFrJ8RcwoJ+3rtypRTcvK1D+L0ahd3FKhcTPpcUKV4Ez2LcvWcBNjVUFx46vDOInw==",
+      "path": "selenium.support/4.9.1",
+      "hashPath": "selenium.support.4.9.1.nupkg.sha512"
+    },
+    "Selenium.WebDriver/4.9.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GSBwNvJMtSGplGxkx8JLv55DxW5PTwTnRniD0q9G4PA7tcCVa3Hg/8/Jf6C3GDd+2DXWepQlBUR6GsIICHnBkw==",
+      "path": "selenium.webdriver/4.9.1",
+      "hashPath": "selenium.webdriver.4.9.1.nupkg.sha512"
     },
     "System.Configuration.ConfigurationManager/6.0.1": {
       "type": "package",

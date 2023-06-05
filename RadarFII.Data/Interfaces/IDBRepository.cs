@@ -14,5 +14,7 @@ namespace RadarFII.Data.Interfaces
        // SqlConnection ConectaDB();
 
         Task<IEnumerable<T>> RealizaConsulta<T>(string expressaoConsulta);
+
+        Task ExecutaInsert(string expressaoInsert);
     }
 }

@@ -5,8 +5,11 @@ Create Table Fundos
 (
 	FundoId int not null IDENTITY(1,1),
 	NomeFundo varchar(50) not null,
+	CNPJFundo varchar(50) not null,
+	NomeAdministrador varchar(50) not null,
+	CNPJAdministrador varchar(50) not null,
 	Ticket varchar(6) not null,
-	LiquidezDiaria numeric not null
+	LiquidezDiaria numeric null
 	
 	CONSTRAINT PK_FundoId PRIMARY KEY (FundoId)
 );

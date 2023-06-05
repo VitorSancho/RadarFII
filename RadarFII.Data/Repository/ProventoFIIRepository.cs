@@ -13,7 +13,14 @@ namespace RadarFII.Data.Repository
 
         public async Task SalvaListaDeProventosFII(IEnumerable<ProventoFII> listaDeProventos)
         {
-            throw new NotImplementedException();
+            foreach(var provento in listaDeProventos)
+            {
+                var expressarInsertProventos = $@"insert into anuncioProventos
+                                (FundoId, DataAnuncio, DataPagamento, ValorProvento, Ticket)
+                                values ({provento.FundoId},{provento.DataAnuncio},{provento.DataPagamento},
+                                    {provento.Valor},{provento.TicketFundo})";
+                _dBRepository.ExecutaInsert(expressarInsertProventos);
+            }
         }
 
         public async Task<IEnumerable<string>> SelectIdAnunciosDivulgadosEm(DateOnly dataBusca)

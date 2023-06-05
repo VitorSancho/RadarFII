@@ -190,6 +190,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "DotNetSeleniumExtras.WaitHelpers": {
+              "target": "Package",
+              "version": "[3.11.0, )"
+            },
             "HtmlAgilityPack": {
               "target": "Package",
               "version": "[1.11.46, )"
@@ -205,6 +209,18 @@
             "RestSharp": {
               "target": "Package",
               "version": "[110.2.0, )"
+            },
+            "ScrapySharp": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Selenium.Support": {
+              "target": "Package",
+              "version": "[4.9.1, )"
+            },
+            "Selenium.WebDriver": {
+              "target": "Package",
+              "version": "[4.9.1, )"
             }
           },
           "imports": [

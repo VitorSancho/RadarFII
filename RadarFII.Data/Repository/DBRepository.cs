@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace RadarFII.Data.Repository
 {
-    public class DBRepository : IDBRepository
+    public class DBRepository : IDBRepository, IDisposable
         //, IDisposable
     {
         public SqlConnection DBConexao;
@@ -28,15 +28,21 @@ namespace RadarFII.Data.Repository
             DBConexao = new SqlConnection(strConexao);
         }
 
-        //public void Dispose()
-        //{
-        //    DBConexao.Dispose();
-        //}
+        public void Dispose()
+        {
+            DBConexao.Dispose();
+        }
 
         async Task<IEnumerable<T>> IDBRepository.RealizaConsulta<T>(string expressaoConsulta)
         {
             if (DBConexao == null) { ConectaDB(); }
             return await DBConexao.QueryAsync<T>(expressaoConsulta);
+        }
+
+        async Task IDBRepository.ExecutaInsert(string expressaoInsert)
+        {
+            if (DBConexao == null) { ConectaDB(); }
+            await DBConexao.QueryAsync(expressaoInsert);
         }
     }
 }

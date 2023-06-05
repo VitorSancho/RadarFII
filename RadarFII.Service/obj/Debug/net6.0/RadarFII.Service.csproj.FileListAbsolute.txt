@@ -28,3 +28,6 @@ C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFI
 C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\obj\Debug\net6.0\refint\RadarFII.Service.dll
 C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\obj\Debug\net6.0\RadarFII.Service.pdb
 C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\obj\Debug\net6.0\ref\RadarFII.Service.dll
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\bin\Debug\net6.0\selenium-manager\linux\selenium-manager
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\bin\Debug\net6.0\selenium-manager\macos\selenium-manager
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Service\bin\Debug\net6.0\selenium-manager\windows\selenium-manager.exe

@@ -15,6 +15,9 @@ C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Serv
 C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Service.pdb
 C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Data.pdb
 C:\Users\vitor\Desktop\RadarFII\RadarFII.Business\obj\Debug\net6.0\RadarFII.Business.csproj.CopyComplete
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\bin\Debug\net6.0\selenium-manager\linux\selenium-manager
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\bin\Debug\net6.0\selenium-manager\macos\selenium-manager
+C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\bin\Debug\net6.0\selenium-manager\windows\selenium-manager.exe
 C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Business.deps.json
 C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Business.dll
 C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Business\bin\Debug\net6.0\RadarFII.Business.pdb

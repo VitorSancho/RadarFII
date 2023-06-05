@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dT0MwjQfz+Uqca41YL0ecv0kEAKcmM0u3kG/7oBwMEWBa7GKb6x3B8/EYg3qFDwCs3CCM4opQN4Gg6hmGsHS8g==",
+  "dgSpecHash": "Ox8ZuyuoESlewNTvx9TF3Pr8AvsKGsAeyEGna2lacDagPDy3qSRuf6p6H1dkphiPId1zQQEEqFLCqfYH/Jtqsg==",
   "success": true,
   "projectFilePath": "C:\\Users\\vitor\\OneDrive\\Documentos\\Desafios e Projetos\\RadarFII\\RadarFII\\RadarFII.Worker\\RadarFII.Worker.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,8 @@
     "C:\\Users\\vitor\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
     "C:\\Users\\vitor\\.nuget\\packages\\coravel\\4.2.1\\coravel.4.2.1.nupkg.sha512",
     "C:\\Users\\vitor\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
+    "C:\\Users\\vitor\\.nuget\\packages\\dotnetseleniumextras.waithelpers\\3.11.0\\dotnetseleniumextras.waithelpers.3.11.0.nupkg.sha512",
+    "C:\\Users\\vitor\\.nuget\\packages\\fsharp.core\\4.5.2\\fsharp.core.4.5.2.nupkg.sha512",
     "C:\\Users\\vitor\\.nuget\\packages\\htmlagilitypack\\1.11.46\\htmlagilitypack.1.11.46.nupkg.sha512",
     "C:\\Users\\vitor\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\vitor\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
@@ -54,6 +56,9 @@
     "C:\\Users\\vitor\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\vitor\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\vitor\\.nuget\\packages\\restsharp\\110.2.0\\restsharp.110.2.0.nupkg.sha512",
+    "C:\\Users\\vitor\\.nuget\\packages\\scrapysharp\\3.0.0\\scrapysharp.3.0.0.nupkg.sha512",
+    "C:\\Users\\vitor\\.nuget\\packages\\selenium.support\\4.9.1\\selenium.support.4.9.1.nupkg.sha512",
+    "C:\\Users\\vitor\\.nuget\\packages\\selenium.webdriver\\4.9.1\\selenium.webdriver.4.9.1.nupkg.sha512",
     "C:\\Users\\vitor\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.1\\system.configuration.configurationmanager.6.0.1.nupkg.sha512",
     "C:\\Users\\vitor\\.nuget\\packages\\system.diagnostics.diagnosticsource\\7.0.1\\system.diagnostics.diagnosticsource.7.0.1.nupkg.sha512",
     "C:\\Users\\vitor\\.nuget\\packages\\system.diagnostics.eventlog\\7.0.0\\system.diagnostics.eventlog.7.0.0.nupkg.sha512",

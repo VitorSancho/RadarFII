@@ -4,7 +4,8 @@ namespace RadarFII.Data.Models
 {
     public class ProventoFII //: IEquatable<ProventoFII>
     {
-        public string NomeFundo { get; set; }
+        public int FundoId { get; set; }
+        public string TicketFundo { get; set; }
         public decimal Valor { get; set; }
         public DateTime DataPagamento { get; set; }
         public DateTime DataAnuncio { get; set; }

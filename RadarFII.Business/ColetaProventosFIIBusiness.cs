@@ -25,7 +25,7 @@ namespace RadarFII.Business
         {
             Console.WriteLine("Something...");
             //dataHoje = DateOnly.FromDateTime(DateTime.Now);
-            dataHoje = new DateOnly(2023, 04, 17);
+            dataHoje = new DateOnly(2023, 06, 02);
             var AnunciosRealizadosHoje = await BuscarProventosAnunciadosHojeNaoColetados();
 
             await SalvarNoBancoDeDados(AnunciosRealizadosHoje);
