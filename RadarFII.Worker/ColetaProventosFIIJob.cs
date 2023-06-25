@@ -1,5 +1,5 @@
 ﻿using Coravel.Invocable;
-using RadarFII.Business.Intefaces;
+using RadarFII.Business.Interfaces.Business;
 using System;
 using System.Collections.Generic;
 using System.Linq;

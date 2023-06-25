@@ -1,12 +1,7 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
-using RadarFII.Data.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RadarFII.Business.Interfaces.Data;
 
 namespace RadarFII.Data.Repository
 {
@@ -39,8 +34,7 @@ namespace RadarFII.Data.Repository
             return await DBConexao.QueryAsync<T>(expressaoConsulta);
         }
 
-        async Task IDBRepository.ExecutaInsert(string expressaoInsert)
-        {
+        async Task ExecutaInsert(string expressaoInsert)        {
             if (DBConexao == null) { ConectaDB(); }
             await DBConexao.QueryAsync(expressaoInsert);
         }

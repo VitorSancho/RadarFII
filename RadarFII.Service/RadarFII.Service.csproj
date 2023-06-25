@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RadarFII.Business\RadarFII.Business.csproj" />
     <ProjectReference Include="..\RadarFII.Data\RadarFII.Data.csproj" />
   </ItemGroup>
 

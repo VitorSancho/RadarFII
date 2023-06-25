@@ -7,15 +7,12 @@ using System.IO;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using RadarFIIWorker;
-//using RadarFII.Service;
-//using RadarFII.Data.Interfaces;
-//using RadarFII.Data.Repository;
-using RadarFII.Business.Intefaces;
 using RadarFII.Business;
-using RadarFII.Data.Interfaces;
 using RadarFII.Service;
 using RadarFII.Data.Repository;
-
+using RadarFII.Business.Interfaces.Business;
+using RadarFII.Business.Interfaces.Service;
+using RadarFII.Business.Interfaces.Data;
 public class Program
 {
     public static void Main(string[] args)
@@ -49,8 +46,8 @@ public class Program
                 //Console.WriteLine($"AMBIENTE USADO (ASPNETCORE_Environment) : {environmentName}");
 
                 config
-                    .AddJsonFile("C:\\Users\\vitor\\OneDrive\\Documentos\\Desafios e Projetos\\RadarFII\\RadarFII\\RadarFII.Worker\\appsettings.json", optional: false, reloadOnChange: true);
-                //.AddJsonFile($"appsettings.{environmentName}.json", optional: true, reloadOnChange: true)
-                //.AddEnvironmentVariables("ASPNETCORE_");
+                    //.AddJsonFile("C:\\Users\\vitor\\OneDrive\\Documentos\\Desafios e Projetos\\RadarFII\\RadarFII\\RadarFII.Worker\\appsettings.json", optional: false, reloadOnChange: true);
+                .AddJsonFile($"appsettings.json", optional: true, reloadOnChange: true)
+                .AddEnvironmentVariables("ASPNETCORE_");
             });
 };
