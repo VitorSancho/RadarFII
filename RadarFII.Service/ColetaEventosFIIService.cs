@@ -3,13 +3,6 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using RestSharp;
 using System.Net;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
-using static System.Net.Mime.MediaTypeNames;
-using System;
-using ScrapySharp.Network;
-using System.Globalization;
 using RadarFII.Business.Interfaces.Service;
 using RadarFII.Service.Models;
 using RadarFII.Business.Models;
@@ -21,7 +14,6 @@ namespace RadarFII.Service
         private readonly RestClient restClient;
         private readonly string UrlListaAnuncios;
         private readonly string UrlAnuncio;
-        private readonly IWebDriver driver;
 
         public ColetaEventosFIIService(IConfiguration _configuration)
         {
@@ -113,11 +105,6 @@ namespace RadarFII.Service
             provento.CNPJAdm = dadosSobreFundo[3].InnerText;
 
             return provento;
-        }
-
-        public Task<IEnumerable<ProventoFII>> ExtraiProventosDeListaDeAnuncios(IEnumerable<EventoFII> listaDeAnuncios)
-        {
-            throw new NotImplementedException();
         }
 
         public Task EnviarParaFila(IEnumerable<ProventoFII> listaDeProventosFII)
