@@ -51,11 +51,11 @@ namespace RadarFII.Service
             return JsonConvert.DeserializeObject<ResponseAnuncioFII>(response).data;
         }
 
-        public async Task<ProventoFII> RequisitarEExtrairProvento(EventoFII anuncioFII)
+        public async Task<ProventoFII> RequisitarEExtrairProvento(EventoFII eventoFII)
         {
-            var htmlAnuncio = await RequisitarAnuncio(anuncioFII.id);
+            var htmlAnuncio = await RequisitarAnuncio(eventoFII.id);
 
-            return await ExtrairProvento(htmlAnuncio, anuncioFII.id);
+            return await ExtrairProvento(htmlAnuncio, eventoFII.id);
         }
 
         private async Task<string> RequisitarAnuncio(string idAnuncio)
@@ -75,18 +75,18 @@ namespace RadarFII.Service
             var dadosSobreProventos = ExtraiDadosProventos(doc);
             var dadosSobreFundo = ExtraiDadosFundos(doc);
 
-            var objProvento = ParserParaProventos(dadosSobreProventos, dadosSobreFundo);
+            var objProvento = ParserParaProventos(dadosSobreFundo, dadosSobreProventos);
 
             return objProvento;
         }
 
-        private List<HtmlNode> ExtraiDadosProventos(HtmlDocument htmlDocument)
+        private List<HtmlNode> ExtraiDadosFundos(HtmlDocument htmlDocument)
         {
             return htmlDocument.DocumentNode.SelectNodes("//span[@class='dado-cabecalho']")//this xpath selects all span tag having its class as hidden first                              
                               .ToList();
         }
 
-        private List<HtmlNode> ExtraiDadosFundos(HtmlDocument htmlDocument)
+        private List<HtmlNode> ExtraiDadosProventos(HtmlDocument htmlDocument)
         {
             return htmlDocument.DocumentNode.SelectNodes("//span[@class='dado-valores']")//this xpath selects all span tag having its class as hidden first                              
                               .ToList();
@@ -95,14 +95,14 @@ namespace RadarFII.Service
         private ProventoFII ParserParaProventos(List<HtmlNode> listaDeDados, List<HtmlNode> dadosSobreFundo)
         {
             var provento = new ProventoFII();
-            provento.DataAnuncio = DateTime.Today.ToString();
-            provento.DataPagamento = listaDeDados[6].InnerText;
-            provento.Valor = listaDeDados[6].InnerText;
-            provento.TickerFundo = dadosSobreFundo[8].InnerText;
-            provento.NomeFundo = dadosSobreFundo[0].InnerText;
-            provento.CNPJFundo = dadosSobreFundo[1].InnerText;
-            provento.NomeAdm = dadosSobreFundo[2].InnerText;
-            provento.CNPJAdm = dadosSobreFundo[3].InnerText;
+            provento.DataAnuncio = dadosSobreFundo[3].InnerText;
+            provento.DataPagamento = dadosSobreFundo[5].InnerText;
+            provento.Valor = dadosSobreFundo[4].InnerText;
+            provento.TickerFundo = listaDeDados[8].InnerText;
+            provento.NomeFundo = listaDeDados[0].InnerText;
+            provento.CNPJFundo = listaDeDados[1].InnerText;
+            provento.NomeAdm = listaDeDados[2].InnerText;
+            provento.CNPJAdm = listaDeDados[3].InnerText;
 
             return provento;
         }
