@@ -28,4 +28,10 @@
     <ProjectReference Include="..\RadarFII.Service\RadarFII.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="files\ProventoHTML.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

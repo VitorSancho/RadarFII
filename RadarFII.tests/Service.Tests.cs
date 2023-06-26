@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Configuration;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Moq;
 using RadarFII.Business.Models;
 using RadarFII.Service;
@@ -8,16 +9,6 @@ namespace RadarFII.tests
 {
     public class ServiceTests
     {
-
-        //BuscarUltimos50Anuncios -> contar se voltaram 50 anuncios
-
-        //RequisitarAnuncio
-        //...
-
-        //ExtrairProvento
-
-        //RequisitarEExtrairProvento
-
         private readonly ColetaEventosFIIService _coletaEventosFIIService;
         private readonly IConfiguration _configurations;
         private readonly EventoFII _eventoFiiMock;
@@ -29,7 +20,6 @@ namespace RadarFII.tests
             _configurations = TestsConfiguration.GetIConfigurationRoot();
             _testeHelper = testeHelper;
 
-            //_configurations = new Mock<IConfiguration>();
             _coletaEventosFIIService = new ColetaEventosFIIService(_configurations);
 
             _eventoFiiMock = new EventoFII()
@@ -71,6 +61,48 @@ namespace RadarFII.tests
             _testeHelper.WriteLine("NomeAdm do fundo está correto!");
             Assert.Equal(_proventoFiiMock.CNPJAdm, testResult.CNPJAdm);
             _testeHelper.WriteLine("CNPJAdm do fundo está correto!");
+        }
+
+        [Fact]
+        public void parseia_html_em_proventoFII()
+        {
+            var Proventohtml = TestRepository.HtmlAnuncioProventos();
+
+            var proventoFIIobject = _coletaEventosFIIService.ExtrairProvento(Proventohtml).Result;
+
+            Assert.Equal(_proventoFiiMock.TickerFundo, proventoFIIobject.TickerFundo);
+            _testeHelper.WriteLine("Ticket do fundo está correto!");
+            Assert.Equal(_proventoFiiMock.Valor, proventoFIIobject.Valor);
+            _testeHelper.WriteLine("Valor do fundo está correto!");
+            Assert.Equal(_proventoFiiMock.DataPagamento, proventoFIIobject.DataPagamento);
+            _testeHelper.WriteLine("DataPagamento do fundo está correto!");
+            Assert.Equal(_proventoFiiMock.DataAnuncio, proventoFIIobject.DataAnuncio);
+            _testeHelper.WriteLine("DataAnuncio do fundo está correto!");
+            Assert.Equal(_proventoFiiMock.NomeFundo, proventoFIIobject.NomeFundo);
+            _testeHelper.WriteLine("NomeFundo do fundo está correto!");
+            Assert.Equal(_proventoFiiMock.CNPJFundo, proventoFIIobject.CNPJFundo);
+            _testeHelper.WriteLine("CNPJFundo do fundo está correto!");
+            Assert.Equal(_proventoFiiMock.NomeAdm, proventoFIIobject.NomeAdm);
+            _testeHelper.WriteLine("NomeAdm do fundo está correto!");
+            Assert.Equal(_proventoFiiMock.CNPJAdm, proventoFIIobject.CNPJAdm);
+            _testeHelper.WriteLine("CNPJAdm do fundo está correto!");
+        }
+
+
+        [Fact]
+        public void requisita_anuncio_proventoFII()
+        {
+            var proventoFIIobject = _coletaEventosFIIService.RequisitarAnuncio(_eventoFiiMock.id).Result;
+
+            Assert.Contains("Valor do provento", proventoFIIobject);
+        }
+
+        [Fact]
+        public void busca_anuncios_site_bfm()
+        {
+            var proventoFIIobject = _coletaEventosFIIService.BuscarUltimos50Anuncios().Result;
+
+            Assert.True(proventoFIIobject.Count() == 50);
         }
     }
 }

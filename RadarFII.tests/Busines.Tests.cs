@@ -14,6 +14,9 @@ namespace RadarFII.tests
             // remove todos os anuncios coletados
             //remove nenhum anuncio coletado
             // remove metado dos anuncios coletados
+
+
+            removeProventosJaColetados
         }
     }
 }
