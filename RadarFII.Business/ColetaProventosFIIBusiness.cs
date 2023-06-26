@@ -1,7 +1,7 @@
-﻿using RadarFII.Business.Intefaces;
-using RadarFII.Data.Interfaces;
-using RadarFII.Data.Models;
-using RadarFII.Service;
+﻿using RadarFII.Business.Interfaces.Business;
+using RadarFII.Business.Interfaces.Data;
+using RadarFII.Business.Interfaces.Service;
+using RadarFII.Business.Models;
 using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -23,12 +23,12 @@ namespace RadarFII.Business
 
         public async Task Coleta()
         {
-            Console.WriteLine("Something...");
             //dataHoje = DateOnly.FromDateTime(DateTime.Now);
-            dataHoje = new DateOnly(2023, 06, 02);
+            dataHoje = new DateOnly(2023, 06, 23);
             var AnunciosRealizadosHoje = await BuscarProventosAnunciadosHojeNaoColetados();
 
-            await SalvarNoBancoDeDados(AnunciosRealizadosHoje);
+            await _coletaProventosFIIService.EnviarParaFila(AnunciosRealizadosHoje);
+            //await SalvarNoBancoDeDados(AnunciosRealizadosHoje);
         }
 
         private async Task<IEnumerable<ProventoFII>> BuscarProventosAnunciadosHojeNaoColetados()
@@ -38,17 +38,12 @@ namespace RadarFII.Business
 
             var anunciosNaoColetados = await removeAnunciosProventosJaColetados(proventosAnunciadosHoje);
 
-            var listaDeProventosAnunciadosHoje = await _coletaProventosFIIService.ExtraiProventosDeListaDeAnuncios(anunciosNaoColetados);
+            var listaDeProventosAnunciadosHoje = await ExtraiProventosDeListaDeAnuncios(anunciosNaoColetados);
 
             return listaDeProventosAnunciadosHoje;
         }
 
-        private async Task SalvarNoBancoDeDados(IEnumerable<ProventoFII> listaDeProventosDeFII)
-        {
-            await _proventoFIIRepository.SalvaListaDeProventosFII(listaDeProventosDeFII);
-        }
-
-        private async Task<IEnumerable<AnuncioFII>> removeAnunciosProventosJaColetados(IEnumerable<AnuncioFII> listaDeProventosDeFIIcoletadosAgora)
+        private async Task<IEnumerable<EventoFII>> removeAnunciosProventosJaColetados(IEnumerable<EventoFII> listaDeProventosDeFIIcoletadosAgora)
         {
             //busca fundos já coletados hoje
             var IdEventosJaColetadosHoje = await _proventoFIIRepository.SelectIdAnunciosDivulgadosEm(dataHoje);
@@ -67,10 +62,22 @@ namespace RadarFII.Business
             return proventosJaColetadosHoje.Count() > 0;
         }
 
-        private async Task<IEnumerable<AnuncioFII>> removeProventosJaColetados(IEnumerable<string> IdEventosJaColetadosEmExecucaoAnterior,
-                                                                            IEnumerable<AnuncioFII> anunciosColetadosNaAtualExecucao)
+        private async Task<IEnumerable<EventoFII>> removeProventosJaColetados(IEnumerable<string> IdEventosJaColetadosEmExecucaoAnterior,
+                                                                            IEnumerable<EventoFII> anunciosColetadosNaAtualExecucao)
         {
             return anunciosColetadosNaAtualExecucao.Where(anuncio => !IdEventosJaColetadosEmExecucaoAnterior.ToList().Contains(anuncio.id));
+        }
+
+        private async Task<IEnumerable<ProventoFII>> ExtraiProventosDeListaDeAnuncios(IEnumerable<EventoFII> listaDeAnuncios)
+        {
+            var listaProventos = new List<ProventoFII>();
+            foreach (var anuncioFII in listaDeAnuncios)
+            {
+                var proventos = await _coletaProventosFIIService.RequisitarEExtrairProvento(anuncioFII);
+                listaProventos.Add(proventos);
+            }
+
+            return listaProventos;
         }
     }
 }
