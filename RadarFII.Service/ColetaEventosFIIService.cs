@@ -35,7 +35,7 @@ namespace RadarFII.Service
 
 
 
-        private async Task<IEnumerable<EventoFII>> BuscarUltimos50Anuncios()
+        public async Task<IEnumerable<EventoFII>> BuscarUltimos50Anuncios()
         {
             var request = new RestRequest(UrlListaAnuncios);
             request.AddParameter("d", "50");
@@ -55,10 +55,10 @@ namespace RadarFII.Service
         {
             var htmlAnuncio = await RequisitarAnuncio(eventoFII.id);
 
-            return await ExtrairProvento(htmlAnuncio, eventoFII.id);
+            return await ExtrairProvento(htmlAnuncio);
         }
 
-        private async Task<string> RequisitarAnuncio(string idAnuncio)
+        public async Task<string> RequisitarAnuncio(string idAnuncio)
         {
             var request = new RestRequest(UrlAnuncio.Replace("@idevento", idAnuncio));
             request.AddHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7");
@@ -67,7 +67,7 @@ namespace RadarFII.Service
             return response;
         }
 
-        private async Task<ProventoFII> ExtrairProvento(string htmlAnuncio, string idAnuncio)
+        public async Task<ProventoFII> ExtrairProvento(string htmlAnuncio)
         {
             HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
             doc.LoadHtml(htmlAnuncio);

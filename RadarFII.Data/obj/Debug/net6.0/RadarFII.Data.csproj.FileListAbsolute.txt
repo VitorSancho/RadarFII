@@ -10,15 +10,3 @@ C:\Users\vitor\Desktop\RadarFII\RadarFII.Data\obj\Debug\net6.0\RadarFII.Data.dll
 C:\Users\vitor\Desktop\RadarFII\RadarFII.Data\obj\Debug\net6.0\refint\RadarFII.Data.dll
 C:\Users\vitor\Desktop\RadarFII\RadarFII.Data\obj\Debug\net6.0\RadarFII.Data.pdb
 C:\Users\vitor\Desktop\RadarFII\RadarFII.Data\obj\Debug\net6.0\ref\RadarFII.Data.dll
-C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Data\bin\Debug\net6.0\RadarFII.Data.deps.json
-C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Data\bin\Debug\net6.0\RadarFII.Data.dll
-C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Data\bin\Debug\net6.0\RadarFII.Data.pdb
-C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Data\obj\Debug\net6.0\RadarFII.Data.csproj.AssemblyReference.cache
-C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Data\obj\Debug\net6.0\RadarFII.Data.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Data\obj\Debug\net6.0\RadarFII.Data.AssemblyInfoInputs.cache
-C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Data\obj\Debug\net6.0\RadarFII.Data.AssemblyInfo.cs
-C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Data\obj\Debug\net6.0\RadarFII.Data.csproj.CoreCompileInputs.cache
-C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Data\obj\Debug\net6.0\RadarFII.Data.dll
-C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Data\obj\Debug\net6.0\refint\RadarFII.Data.dll
-C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Data\obj\Debug\net6.0\RadarFII.Data.pdb
-C:\Users\vitor\OneDrive\Documentos\Desafios e Projetos\RadarFII\RadarFII\RadarFII.Data\obj\Debug\net6.0\ref\RadarFII.Data.dll
