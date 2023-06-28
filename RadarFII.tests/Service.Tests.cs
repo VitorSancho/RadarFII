@@ -1,8 +1,11 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Moq;
+using RadarFII.Business.Interfaces.Data;
+using RadarFII.Business.Interfaces.Service;
 using RadarFII.Business.Models;
 using RadarFII.Service;
+using RadarFII.Service.RabbitMQ;
 using Xunit.Abstractions;
 
 namespace RadarFII.tests
@@ -13,14 +16,19 @@ namespace RadarFII.tests
         private readonly IConfiguration _configurations;
         private readonly EventoFII _eventoFiiMock;
         private readonly ProventoFII _proventoFiiMock;
+        private readonly ProventoFII _proventoFiiMock_2;
+        private readonly List<ProventoFII> _lista_proventos;
         private readonly ITestOutputHelper _testeHelper;
+        private readonly RabbitMQService _rabbitMQService;
 
         public ServiceTests(ITestOutputHelper testeHelper)
         {
             _configurations = TestsConfiguration.GetIConfigurationRoot();
             _testeHelper = testeHelper;
 
-            _coletaEventosFIIService = new ColetaEventosFIIService(_configurations);
+            _rabbitMQService = new RabbitMQService();
+
+            _coletaEventosFIIService = new ColetaEventosFIIService(_configurations, _rabbitMQService);
 
             _eventoFiiMock = new EventoFII()
             {
@@ -38,6 +46,21 @@ namespace RadarFII.tests
                 NomeAdm = "BTG PACTUAL SERVI&Ccedil;OS FINANCEIROS S/A DTVM",
                 CNPJAdm = "59.281.253/0001-23"
             };
+
+
+            _proventoFiiMock_2 = new ProventoFII()
+            {
+                TickerFundo = "Teste11",
+                Valor = "0,91",
+                DataPagamento = "10/06/2023",
+                DataAnuncio = "09/06/2023",
+                NomeFundo = "Nome do fundo teste",
+                CNPJFundo = "38.456.508",
+                NomeAdm = "Nome ADM teste",
+                CNPJAdm = "59.281.253"
+            };
+
+            _lista_proventos = new List<ProventoFII>() { _proventoFiiMock, _proventoFiiMock_2};
         }
 
         [Fact]
@@ -104,5 +127,12 @@ namespace RadarFII.tests
 
             Assert.True(proventoFIIobject.Count() == 50);
         }
+
+        [Fact]
+        public void envia_para_fila()
+        {
+            _coletaEventosFIIService.EnviarParaFila(_lista_proventos);
+        }
+        
     }
 }

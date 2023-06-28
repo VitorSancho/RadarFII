@@ -13,6 +13,8 @@ using RadarFII.Data.Repository;
 using RadarFII.Business.Interfaces.Business;
 using RadarFII.Business.Interfaces.Service;
 using RadarFII.Business.Interfaces.Data;
+using RadarFII.Service.RabbitMQ;
+
 public class Program
 {
     public static void Main(string[] args)
@@ -39,6 +41,8 @@ public class Program
                 services.AddScoped<IProventoFIIRepository, ProventoFIIRepository>();
                 services.AddScoped<IColetaProventosFIIBusiness, ColetaProventosFIIBusiness>();
                 services.AddScoped<IDBRepository, DBRepository>();
+                services.AddScoped<IRabbitMQService, RabbitMQService>();
+                
             })
             .ConfigureAppConfiguration((context, config) =>
             {

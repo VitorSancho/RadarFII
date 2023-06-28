@@ -43,7 +43,7 @@ namespace RadarFII.Business
             return listaDeProventosAnunciadosHoje;
         }
 
-        private async Task<IEnumerable<EventoFII>> removeAnunciosProventosJaColetados(IEnumerable<EventoFII> listaDeProventosDeFIIcoletadosAgora)
+        public async Task<IEnumerable<EventoFII>> removeAnunciosProventosJaColetados(IEnumerable<EventoFII> listaDeProventosDeFIIcoletadosAgora)
         {
             //busca fundos já coletados hoje
             var IdEventosJaColetadosHoje = await _proventoFIIRepository.SelectIdAnunciosDivulgadosEm(dataHoje);

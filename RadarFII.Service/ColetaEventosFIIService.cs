@@ -6,6 +6,7 @@ using System.Net;
 using RadarFII.Business.Interfaces.Service;
 using RadarFII.Service.Models;
 using RadarFII.Business.Models;
+using RadarFII.Service.RabbitMQ;
 
 namespace RadarFII.Service
 {
@@ -14,12 +15,16 @@ namespace RadarFII.Service
         private readonly RestClient restClient;
         private readonly string UrlListaAnuncios;
         private readonly string UrlAnuncio;
+        private readonly IRabbitMQService _rabbitMQService;
 
-        public ColetaEventosFIIService(IConfiguration _configuration)
+        public ColetaEventosFIIService(IConfiguration _configuration,
+                            IRabbitMQService rabbitMQService)
         {
             UrlListaAnuncios = _configuration["BmfFundosNet:UrlListaAnuncios"];
 
             UrlAnuncio = _configuration["BmfFundosNet:UrlAnuncio"];
+
+            _rabbitMQService = rabbitMQService;
 
             restClient = new RestClient();
             
@@ -111,7 +116,7 @@ namespace RadarFII.Service
         {
             foreach(var provento in listaDeProventosFII)
             {
-                Console.WriteLine(provento.ToString());
+                _rabbitMQService.Publicar(provento);
             }
             return null;
         }
