@@ -16,6 +16,7 @@ namespace RadarFII.Service.RabbitMQ
         {
 
             var factory = new ConnectionFactory() { HostName = "localhost", UserName= "guest", Password = "guest" };
+                Password = "RadarFIIingestao07#" };
 
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
