@@ -1,7 +1,15 @@
-﻿using RabbitMQ.Client;
+﻿using Amazon;
+using Amazon.MQ;
+using Amazon.MQ.Model;
+using Amazon.Runtime;
+using Amazon.SQS;
+using Amazon.SQS.Model;
+using Newtonsoft.Json;
+using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using RadarFII.Business.Interfaces.Service;
 using RadarFII.Business.Models;
+using RadarFII.Service.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,32 +23,37 @@ namespace RadarFII.Service.RabbitMQ
         public void Publicar(ProventoFII proventoFII)
         {
 
-            var factory = new ConnectionFactory() { HostName = "localhost", UserName= "guest", Password = "guest" };
-                Password = "RadarFIIingestao07#" };
+            // Specify your AWS access key and secret key
+            string awsAccessKeyId = "***";
+            string secretKey = "**+o";
 
-            using (var connection = factory.CreateConnection())
-            using (var channel = connection.CreateModel())
+            string message = JsonConvert.SerializeObject(proventoFII);
+            // Specify the message you want to publish
+
+            try
             {
-                channel.ConfirmSelect();
-                channel.BasicAcks += Evento_Confirmacao;
-                channel.BasicNacks += Evento_NaoConfirmacao;
+                var credentials = new BasicAWSCredentials(awsAccessKeyId, secretKey);
+                var sqsConfig = new AmazonSQSConfig
+                {
+                    RegionEndpoint = RegionEndpoint.SAEast1
+                };
 
-                channel.QueueDeclare(queue: "proventosFII",
-                                     durable: false,
-                                     exclusive: false,
-                                     autoDelete: false,
-                                     arguments: null);
+                using (var sqsClient = new AmazonSQSClient(credentials, sqsConfig))
+                {
+                    var sendMessageRequest = new SendMessageRequest
+                    {
+                        QueueUrl = "https://sqs.sa-east-1.amazonaws.com/128601947047/RadarFIIingestao",
+                        MessageBody = message
+                    };
 
-                var json = Newtonsoft.Json.JsonConvert.SerializeObject(proventoFII);
+                    var sendMessageResponse = sqsClient.SendMessageAsync(sendMessageRequest).GetAwaiter().GetResult();
 
-                var body = Encoding.UTF8.GetBytes(json);
-
-                channel.BasicPublish(exchange: "",
-                                             routingKey: "proventosFII",
-                                             basicProperties: null,
-                                             body: body);
-
-                Console.WriteLine("Mensagem enviada!");
+                    Console.WriteLine("Message sent successfully!");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
             }
         }
 
